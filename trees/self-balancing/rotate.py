@@ -63,4 +63,4 @@ def left_right_rotate(node):
     # left rotate parent
     node.left = left_rotate(node.left)
     # right rotate gp
-    return rotate_rotate(node)
+    return right_rotate(node)
