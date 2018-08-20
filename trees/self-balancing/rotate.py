@@ -9,9 +9,9 @@ def left_rotate(node):
 
     # 1. set tmp to gp's right child
     tmp = node.right
-    # 2. set gp's left child to tmp's right child
+    # 2. set gp's right child to tmp's left child
     node.right = tmp.left
-    # 3. set tmp's right child to gp
+    # 3. set tmp's left child to gp
     tmp.left = node
     # 4. replace gp w/ tmp
     return tmp
