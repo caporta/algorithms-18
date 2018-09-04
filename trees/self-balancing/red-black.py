@@ -2,11 +2,10 @@ class TreeNode():
     RED = 0
     BLACK = 1
 
-    def __init__(self, value, parent=None, color=RED):
+    def __init__(self, value, color=RED):
         self.value = value
         self.left = None
         self.right = None
-        self.parent = parent
         self.color = color
 
 
@@ -76,4 +75,44 @@ class RedBlackTree():
     """
 
     def insert(self, root, key):
-        pass
+        if not root:
+            return TreeNode(key)
+        elif key < root.value:
+            root.left = self.insert(root.left, key)
+        else:
+            root.right = self.insert(root.right, key)
+            if root.color == RED:
+                return root
+            elif root.right.color == RED:
+                if _has_red_child(root.right):
+                    return _fix_right(root, key)
+                else:
+                    return root
+            else
+                return root
+
+    def _fix_right(self, root, key):
+        parent = root.right
+        aunt = root.left
+
+        if aunt.color == RED:
+            # red aunt, color flip
+            root.color = RED
+            aunt.color = BLACK
+            parent.color = BLACK
+
+            return root
+
+        else:
+            # black aunt, rotate
+            if key > parent.right.value:
+                # left rotate
+                tmp = node.right
+                node.right = tmp.left
+                tmp.left = node
+                tmp.color = BLACK
+                tmp.left = RED
+
+            if key < parent.right.value:
+                # right left rotate
+                pass
